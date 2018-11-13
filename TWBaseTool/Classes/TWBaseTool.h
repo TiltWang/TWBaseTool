@@ -10,6 +10,7 @@
 #define TWBaseTool_h
 
 #import "TWUtil.h"
+#import "UIView+Layout.h"
 
 #if __OBJC__
 
@@ -21,9 +22,9 @@
 
 ///设置debug下打印
 #ifdef DEBUG
-#define NSLog(format, ...) printf("\n[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
+#define TWLog(format, ...) printf("\n[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
 #else
-#define NSLog(format, ...)
+#define TWLog(format, ...)
 #endif
 
 //非空判断 宏
@@ -35,6 +36,11 @@
 #elif TARGET_OS_IPHONE
 #define SIMULATOR 0
 #endif
+
+#define ScreenHeight [[UIScreen mainScreen] bounds].size.height
+#define ScreenWidth [[UIScreen mainScreen] bounds].size.width
+
+#define kVideoHeight(width)     (width * 9.0 / 16)
 
 #endif /* __OBJC__ */
 
