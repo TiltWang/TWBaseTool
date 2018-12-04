@@ -14,7 +14,7 @@
 		A51DE6F421999EA400A65D27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A51DE6F221999EA400A65D27 /* LaunchScreen.storyboard */; };
 		A51DE6F721999EA400A65D27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A51DE6F621999EA400A65D27 /* main.m */; };
 		A51DE70121999F1600A65D27 /* TWUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A51DE70021999F1600A65D27 /* TWUtil.m */; };
-		A51DE720219ACA5C00A65D27 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = A51DE71F219ACA5C00A65D27 /* UIView+Layout.m */; };
+		A57D074121B6572200B36189 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D074021B6572200B36189 /* UIView+Frame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +31,8 @@
 		A51DE6FE21999EED00A65D27 /* TWBaseTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWBaseTool.h; sourceTree = "<group>"; };
 		A51DE6FF21999F1600A65D27 /* TWUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWUtil.h; sourceTree = "<group>"; };
 		A51DE70021999F1600A65D27 /* TWUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TWUtil.m; sourceTree = "<group>"; };
-		A51DE71E219ACA5C00A65D27 /* UIView+Layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
-		A51DE71F219ACA5C00A65D27 /* UIView+Layout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		A57D073F21B6572200B36189 /* UIView+Frame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		A57D074021B6572200B36189 /* UIView+Frame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +85,8 @@
 				A51DE6FE21999EED00A65D27 /* TWBaseTool.h */,
 				A51DE6FF21999F1600A65D27 /* TWUtil.h */,
 				A51DE70021999F1600A65D27 /* TWUtil.m */,
-				A51DE71E219ACA5C00A65D27 /* UIView+Layout.h */,
-				A51DE71F219ACA5C00A65D27 /* UIView+Layout.m */,
+				A57D073F21B6572200B36189 /* UIView+Frame.h */,
+				A57D074021B6572200B36189 /* UIView+Frame.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -161,10 +161,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A57D074121B6572200B36189 /* UIView+Frame.m in Sources */,
 				A51DE70121999F1600A65D27 /* TWUtil.m in Sources */,
 				A51DE6EC21999EA300A65D27 /* ViewController.m in Sources */,
 				A51DE6F721999EA400A65D27 /* main.m in Sources */,
-				A51DE720219ACA5C00A65D27 /* UIView+Layout.m in Sources */,
 				A51DE6E921999EA300A65D27 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
