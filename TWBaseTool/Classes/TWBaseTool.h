@@ -26,6 +26,21 @@
 #define TWLog(format, ...)
 #endif
 
+//AppDelegate
+#define APP_DELEGATE ((AppDelegate *)[UIApplication sharedApplication].delegate)
+// App 语言
+#define APP_LANGUAGE [[NSUserDefaults standardUserDefaults] objectForKey:@"AppLanguage"]
+
+// 应用程序的名字
+#define APP_NAME [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]
+
+// 应用程序版本号
+#define APP_VERSION [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+
+// 应用程序BundleId
+#define APP_BUNDLEID [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"]
+
+
 //非空判断 宏
 #define IsNilOrNull(_ref)   (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]))
 
