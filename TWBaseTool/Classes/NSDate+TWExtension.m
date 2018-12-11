@@ -1,18 +1,18 @@
 //
-//  NSDate+Extension.m
-//  ClassOnlineModule
+//  NSDate+TWExtension.m
+//  TWBaseTool
 //
-//  Created by Tilt on 2018/12/5.
-//  Copyright © 2018年 Tilt. All rights reserved.
+//  Created by Tilt on 2018/12/11.
+//  Copyright © 2018年 tilt. All rights reserved.
 //
 
-#import "NSDate+Extension.h"
-#import "NSDateFormatter+Extension.h"
+#import "NSDate+TWExtension.h"
+#import "NSDateFormatter+TWExtension.h"
 
 #define DATE_COMPONENTS (NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekOfMonth |  NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitWeekday | NSCalendarUnitWeekdayOrdinal)
 #define CURRENT_CALENDAR [NSCalendar currentCalendar]
 
-@implementation NSDate (Extension)
+@implementation NSDate (TWExtension)
 
 + (NSTimeInterval)timeStamp {
     NSDate *date = [NSDate date];

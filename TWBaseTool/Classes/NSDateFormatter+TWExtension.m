@@ -1,14 +1,14 @@
 //
-//  NSDateFormatter+Extension.m
-//  ClassOnlineModule
+//  NSDateFormatter+TWExtension.m
+//  TWBaseTool
 //
-//  Created by Tilt on 2018/12/5.
-//  Copyright © 2018年 Tilt. All rights reserved.
+//  Created by Tilt on 2018/12/11.
+//  Copyright © 2018年 tilt. All rights reserved.
 //
 
-#import "NSDateFormatter+Extension.h"
+#import "NSDateFormatter+TWExtension.h"
 
-@implementation NSDateFormatter (Extension)
+@implementation NSDateFormatter (TWExtension)
 
 + (id)dateFormatter {
     return [[self alloc] init];

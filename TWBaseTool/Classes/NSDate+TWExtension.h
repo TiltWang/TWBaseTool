@@ -1,9 +1,9 @@
 //
-//  NSDate+Extension.h
-//  ClassOnlineModule
+//  NSDate+TWExtension.h
+//  TWBaseTool
 //
-//  Created by Tilt on 2018/12/5.
-//  Copyright © 2018年 Tilt. All rights reserved.
+//  Created by Tilt on 2018/12/11.
+//  Copyright © 2018年 tilt. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -24,7 +24,7 @@ typedef NS_ENUM(NSUInteger, TimeBucketType) {
     TimeBucketTypeLateNight         = 1 << 5, //深夜:21:00-24:00
 };
 
-@interface NSDate (Extension)
+@interface NSDate (TWExtension)
 
 ///获取时间
 + (NSTimeInterval)timeStamp;
