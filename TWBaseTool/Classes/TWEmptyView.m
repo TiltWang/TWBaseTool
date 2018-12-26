@@ -43,7 +43,8 @@
     switch (emptyType) {
         case TWEmptyTypeCustom: {
             [self addSubview:self.emptyCustomView];
-            self.emptyCustomView.center = self.center;
+            self.emptyCustomView.centerX = self.width / 2.0;
+            self.emptyCustomView.centerY = self.height / 2.0;
             break;
         }
         case TWEmptyTypeError: {
@@ -51,14 +52,14 @@
             [self addSubview:self.emptyTipLbl];
             [self addSubview:self.emptyReloadBtn];
             [self.emptyImgView sizeToFit];
-            self.emptyImgView.centerX = self.centerX;
-            self.emptyImgView.centerY = self.centerY - 50;
+            self.emptyImgView.centerX = self.width / 2.0;
+            self.emptyImgView.centerY = self.height / 2.0 - 50;
             self.emptyImgView.size = self.emptyImgView.size;
             [self.emptyTipLbl sizeToFit];
-            self.emptyTipLbl.centerX = self.centerX;
+            self.emptyTipLbl.centerX = self.width / 2.0;
             self.emptyTipLbl.y = self.emptyImgView.y + self.emptyImgView.height + 10;
             [self.emptyReloadBtn sizeToFit];
-            self.emptyReloadBtn.centerX = self.centerX;
+            self.emptyReloadBtn.centerX = self.width / 2.0;
             self.emptyReloadBtn.y = self.emptyTipLbl.y + self.emptyTipLbl.height + 10;
             break;
         }

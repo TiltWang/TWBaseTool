@@ -53,7 +53,8 @@
     [btn addTarget:self action:@selector(testBtnClick) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)testBtnClick {
-    [self showCustomEmptyView];
+//    [self showCustomEmptyView];
+    [self showEmptyView];
 }
 
 - (void)showEmptyView {
