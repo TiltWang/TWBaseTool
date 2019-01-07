@@ -12,6 +12,8 @@
 
 @interface TWLoadingView ()
 
+@property (nonatomic, strong) UIView *circleBgView;
+
 @property (nonatomic, strong) UIView *circleView;
 
 @property (nonatomic, assign) CGFloat circleWidth;
@@ -32,13 +34,16 @@
     return loadingView;
 }
 
-+ (instancetype)loadingViewWithFrame:(CGRect)frame circleBgColor:(UIColor *)circleBgColor circleColor:(UIColor *)circleColor circleWidth:(CGFloat)circleWidth circleBorderWidth:(CGFloat)circleBorderWidth withTipText:(NSString *)tipText tipFont:(UIFont *)tipFont tipColor:(UIColor *)tipColor {
++ (instancetype)loadingViewWithFrame:(CGRect)frame circleBgColor:(UIColor *)circleBgColor circleColor:(UIColor *)circleColor circleSideColor:(UIColor *)circleSideColor circleWidth:(CGFloat)circleWidth circleBorderWidth:(CGFloat)circleBorderWidth withTipText:(NSString *)tipText tipFont:(UIFont *)tipFont tipColor:(UIColor *)tipColor {
     TWLoadingView *loadingView = [[TWLoadingView alloc] initWithFrame:frame];
     if (circleBgColor) {
-        loadingView.circleView.backgroundColor = circleBgColor;
+        loadingView.circleBgView.backgroundColor = circleBgColor;
     }
     if (circleColor) {
         loadingView.circleColor = circleColor;
+    }
+    if (circleSideColor) {
+        loadingView.backgroundColor = circleSideColor;
     }
     if (circleWidth > 0.1) {
         loadingView.circleWidth = circleWidth;
@@ -71,7 +76,10 @@
 }
 
 - (void)setupUI {
+    [self addSubview:self.circleBgView];
     [self addSubview:self.circleView];
+    
+    self.circleBgView.center = CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0);
     self.circleView.center = CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0);
     [self addSubview:self.tipLbl];
     
@@ -102,9 +110,8 @@
 - (void)buildCricleLayer {
     ///创建渐变图层
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-//    UIColor *middleColor = [UIColor color
     gradientLayer.colors = @[(__bridge id)[UIColor clearColor].CGColor, (__bridge id)self.circleColor.CGColor];
-//    gradientLayer.locations = @[@0.2, @0.6];
+    gradientLayer.locations = @[@0.2, @0.6];
     gradientLayer.startPoint = CGPointMake(0, 0);
     gradientLayer.endPoint = CGPointMake(1.0, 0);
     gradientLayer.frame =CGRectMake(0, 0, self.circleWidth, self.circleWidth);
@@ -122,6 +129,14 @@
     self.circleView.layer.mask = layer;
 }
 
+- (UIView *)circleBgView {
+    if (!_circleBgView) {
+        _circleBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.circleWidth, self.circleWidth)];
+        _circleBgView.layer.cornerRadius = 3.0;
+        _circleBgView.layer.masksToBounds = YES;
+    }
+    return _circleBgView;
+}
 
 - (UIView *)circleView {
     if (!_circleView) {

@@ -63,7 +63,7 @@
 - (void)testLoading {
 //    TWLoadingView *loadingView = [TWLoadingView loadingViewWithFrame:CGRectMake(0, 200, 150, 150) circleColor:[UIColor greenColor] circleWidth:50.0 circleBorderWidth:3.0 withTipText:@"321" tipFont:[UIFont systemFontOfSize:20.0] tipColor:[UIColor redColor]];
 //    TWLoadingView *loadingView = [TWLoadingView loadingViewDefaultWithFrame:CGRectMake(0, 200, 150, 150)];
-    TWLoadingView *loadingView = [TWLoadingView loadingViewWithFrame:CGRectMake(0, 200, 150, 150) circleBgColor:[UIColor lightGrayColor] circleColor:nil circleWidth:0.0 circleBorderWidth:0.0 withTipText:nil tipFont:nil tipColor:nil];
+    TWLoadingView *loadingView = [TWLoadingView loadingViewWithFrame:CGRectMake(0, 200, 150, 150) circleBgColor:HEXACOLOR(0xffffff, 0.5) circleColor:nil circleSideColor:nil circleWidth:0.0 circleBorderWidth:0.0 withTipText:nil tipFont:nil tipColor:nil];
     loadingView.backgroundColor = [UIColor colorWithRed:((float)arc4random_uniform(256) / 255.0) green:((float)arc4random_uniform(256) / 255.0) blue:((float)arc4random_uniform(256) / 255.0) alpha:1.0];
     [self.view addSubview:loadingView];
 }
