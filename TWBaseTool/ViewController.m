@@ -17,6 +17,7 @@
 @interface ViewController ()
 @property (nonatomic, strong) UILabel *lbl;
 @property (nonatomic, strong) TWEmptyView *emptyView;
+@property (nonatomic, strong) TWLoadingView *loadingView;
 @end
 
 @implementation ViewController
@@ -30,11 +31,12 @@
     [self testBtn];
 }
 
-//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-////    [self testAttributeStrHeight];
-////    [self showEmptyView];
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    [self testAttributeStrHeight];
+//    [self showEmptyView];
 //    [self showCustomEmptyView];
-//}
+    self.loadingView.frame = CGRectMake(0, 300, 250, 100);
+}
 
 - (void)testAttributeStrHeight {
     NSString *content = @"tesejofjslkdjfsakas你好啊 讷讷呢那就打卡结束了阿jdfjlskajflkas你好啊 讷讷呢那就打卡结束了阿里看风景埃里克死定了房间啊圣诞节福利卡机esejokas你好啊 讷讷呢那就打卡结束了阿fjslkdjfsajdfjlskajflkas你好啊esejkas你好啊 讷讷呢那就打卡结束了阿ofjslkdjfsajdfjlkas你好啊 讷讷呢那就打卡结束了阿skajflkas你好啊kas你好啊 讷讷呢那就打卡结束了阿";
@@ -65,6 +67,7 @@
 //    TWLoadingView *loadingView = [TWLoadingView loadingViewDefaultWithFrame:CGRectMake(0, 200, 150, 150)];
     TWLoadingView *loadingView = [TWLoadingView loadingViewWithFrame:CGRectMake(0, 200, 150, 150) circleBgColor:HEXACOLOR(0xffffff, 0.5) circleColor:nil circleSideColor:nil circleWidth:50.0 circleBorderWidth:0.0 withTipText:@"加载中..." tipFont:nil tipColor:nil];
     loadingView.backgroundColor = [UIColor colorWithRed:((float)arc4random_uniform(256) / 255.0) green:((float)arc4random_uniform(256) / 255.0) blue:((float)arc4random_uniform(256) / 255.0) alpha:1.0];
+    self.loadingView = loadingView;
     [self.view addSubview:loadingView];
 }
 

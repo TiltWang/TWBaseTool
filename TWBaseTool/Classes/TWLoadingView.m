@@ -78,18 +78,25 @@
 - (void)setupUI {
     [self addSubview:self.circleBgView];
     [self addSubview:self.circleView];
-    
-    self.circleBgView.center = CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0);
-    self.circleView.center = CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0);
     [self addSubview:self.tipLbl];
+    
+//    self.circleBgView.center = CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0);
+//    self.circleView.center = CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0);
     
     self.tipLbl.width = self.frame.size.width - 20.0;
     [self.tipLbl sizeToFit];
-    self.tipLbl.y = CGRectGetMaxY(self.circleView.frame) + 5;
-    self.tipLbl.centerX = self.frame.size.width / 2.0;
+//    self.tipLbl.y = CGRectGetMaxY(self.circleView.frame) + 5;
+//    self.tipLbl.centerX = self.frame.size.width / 2.0;
     
     [self buildCricleLayer];
     [self anim];
+}
+
+- (void)layoutSubviews {
+    self.circleBgView.center = CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0);
+    self.circleView.center = CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0);
+    self.tipLbl.y = CGRectGetMaxY(self.circleView.frame) + 5;
+    self.tipLbl.centerX = self.frame.size.width / 2.0;
 }
 
 
