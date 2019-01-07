@@ -36,9 +36,6 @@
 
 + (instancetype)loadingViewWithFrame:(CGRect)frame circleBgColor:(UIColor *)circleBgColor circleColor:(UIColor *)circleColor circleSideColor:(UIColor *)circleSideColor circleWidth:(CGFloat)circleWidth circleBorderWidth:(CGFloat)circleBorderWidth withTipText:(NSString *)tipText tipFont:(UIFont *)tipFont tipColor:(UIColor *)tipColor {
     TWLoadingView *loadingView = [[TWLoadingView alloc] initWithFrame:frame];
-    if (circleBgColor) {
-        loadingView.circleBgView.backgroundColor = circleBgColor;
-    }
     if (circleColor) {
         loadingView.circleColor = circleColor;
     }
@@ -50,6 +47,9 @@
     }
     if (circleBorderWidth > 0.01) {
         loadingView.circleBorderWidth = circleBorderWidth;
+    }
+    if (circleBgColor) {
+        loadingView.circleBgView.backgroundColor = circleBgColor;
     }
     if (tipText) {
         loadingView.tipLbl.text = tipText;
@@ -83,6 +83,7 @@
     self.circleView.center = CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0);
     [self addSubview:self.tipLbl];
     
+    self.tipLbl.width = self.frame.size.width - 20.0;
     [self.tipLbl sizeToFit];
     self.tipLbl.y = CGRectGetMaxY(self.circleView.frame) + 5;
     self.tipLbl.centerX = self.frame.size.width / 2.0;
@@ -171,6 +172,8 @@
         _tipLbl.font = [UIFont systemFontOfSize:12.0];
         _tipLbl.textColor = HEXCOLOR(0x666666);
         _tipLbl.text = @"加载中...";
+        _tipLbl.numberOfLines = 0;
+        _tipLbl.textAlignment = NSTextAlignmentCenter;
     }
     return _tipLbl;
 }
