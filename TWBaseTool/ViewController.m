@@ -12,9 +12,11 @@
 #import "UIView+Frame.h"
 #import "NSAttributedString+TWExtension.h"
 #import "TWEmptyView.h"
+#import "TWLoadingView.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) UILabel *lbl;
+@property (nonatomic, strong) TWEmptyView *emptyView;
 @end
 
 @implementation ViewController
@@ -54,7 +56,16 @@
 }
 - (void)testBtnClick {
 //    [self showCustomEmptyView];
-    [self showEmptyView];
+//    [self showEmptyView];
+    [self testLoading];
+}
+
+- (void)testLoading {
+//    TWLoadingView *loadingView = [TWLoadingView loadingViewWithFrame:CGRectMake(0, 200, 150, 150) circleColor:[UIColor greenColor] circleWidth:50.0 circleBorderWidth:3.0 withTipText:@"321" tipFont:[UIFont systemFontOfSize:20.0] tipColor:[UIColor redColor]];
+    TWLoadingView *loadingView = [TWLoadingView loadingViewDefaultWithFrame:CGRectMake(0, 200, 150, 150)];
+//    TWLoadingView *loadingView = [[TWLoadingView alloc] initWithFrame:CGRectMake(0, 200, 50, 50)];
+//    loadingView.backgroundColor = [UIColor colorWithRed:((float)arc4random_uniform(256) / 255.0) green:((float)arc4random_uniform(256) / 255.0) blue:((float)arc4random_uniform(256) / 255.0) alpha:1.0];
+    [self.view addSubview:loadingView];
 }
 
 - (void)showEmptyView {
@@ -78,10 +89,18 @@
 //    view.emptyCustomView = cView;
     view.emptyType = TWEmptyTypeCustom;
     view.hasTapReloadEvent = YES;
+    TW_WeakSelf
     view.reloadBlock = ^{
-        TWLog(@"点了");
+        TW_StrongSelf
+        [self reloadAction];
     };
+    self.emptyView = view;
     [self.view addSubview:view];
+}
+
+- (void)reloadAction {
+    self.lbl.text = @"123413";
+    [self.emptyView removeFromSuperview];
 }
 
 

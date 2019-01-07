@@ -14,6 +14,7 @@
 		A51DE6F421999EA400A65D27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A51DE6F221999EA400A65D27 /* LaunchScreen.storyboard */; };
 		A51DE6F721999EA400A65D27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A51DE6F621999EA400A65D27 /* main.m */; };
 		A51DE70121999F1600A65D27 /* TWUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A51DE70021999F1600A65D27 /* TWUtil.m */; };
+		A521E6F521E340D9002C48A5 /* TWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = A521E6F421E340D9002C48A5 /* TWLoadingView.m */; };
 		A576246221BF6C9D0033214C /* NSDate+TWExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A576246121BF6C9D0033214C /* NSDate+TWExtension.m */; };
 		A576246521BF6CF90033214C /* NSDateFormatter+TWExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A576246421BF6CF90033214C /* NSDateFormatter+TWExtension.m */; };
 		A576246821BF6D5A0033214C /* UIImage+TWExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A576246721BF6D5A0033214C /* UIImage+TWExtension.m */; };
@@ -38,6 +39,8 @@
 		A51DE6FE21999EED00A65D27 /* TWBaseTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWBaseTool.h; sourceTree = "<group>"; };
 		A51DE6FF21999F1600A65D27 /* TWUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWUtil.h; sourceTree = "<group>"; };
 		A51DE70021999F1600A65D27 /* TWUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TWUtil.m; sourceTree = "<group>"; };
+		A521E6F321E340D9002C48A5 /* TWLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWLoadingView.h; sourceTree = "<group>"; };
+		A521E6F421E340D9002C48A5 /* TWLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TWLoadingView.m; sourceTree = "<group>"; };
 		A576246021BF6C9D0033214C /* NSDate+TWExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+TWExtension.h"; sourceTree = "<group>"; };
 		A576246121BF6C9D0033214C /* NSDate+TWExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TWExtension.m"; sourceTree = "<group>"; };
 		A576246321BF6CF90033214C /* NSDateFormatter+TWExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+TWExtension.h"; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				A576247021BF86880033214C /* NSAttributedString+TWExtension.m */,
 				A5BF4E7221D3150700D6F2AF /* TWEmptyView.h */,
 				A5BF4E7321D3150700D6F2AF /* TWEmptyView.m */,
+				A521E6F321E340D9002C48A5 /* TWLoadingView.h */,
+				A521E6F421E340D9002C48A5 /* TWLoadingView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				A51DE6EC21999EA300A65D27 /* ViewController.m in Sources */,
 				A51DE6F721999EA400A65D27 /* main.m in Sources */,
 				A51DE6E921999EA300A65D27 /* AppDelegate.m in Sources */,
+				A521E6F521E340D9002C48A5 /* TWLoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

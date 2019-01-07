@@ -70,4 +70,63 @@
 
 #endif /* __OBJC__ */
 
+
+#pragma mark - weak / strong
+#define TW_WeakSelf        @TW_Weakify(self);
+#define TW_StrongSelf      @TW_Strongify(self);
+
+/*！
+ * 强弱引用转换，用于解决代码块（block）与强引用self之间的循环引用问题
+ * 调用方式: `@TW_Weakify`实现弱引用转换，`@TW_Strongify`实现强引用转换
+ *
+ * 示例：
+ * @TW_Weakify
+ * [obj block:^{
+ * @strongify_self
+ * self.property = something;
+ * }];
+ */
+#ifndef TW_Weakify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define TW_Weakify(object) autoreleasepool{} __weak __typeof__(object) weak##_##object = object;
+#else
+#define TW_Weakify(object) autoreleasepool{} __block __typeof__(object) block##_##object = object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define TW_Weakify(object) try{} @finally{} {} __weak __typeof__(object) weak##_##object = object;
+#else
+#define TW_Weakify(object) try{} @finally{} {} __block __typeof__(object) block##_##object = object;
+#endif
+#endif
+#endif
+
+/*！
+ * 强弱引用转换，用于解决代码块（block）与强引用对象之间的循环引用问题
+ * 调用方式: `@TW_Weakify(object)`实现弱引用转换，`@TW_Strongify(object)`实现强引用转换
+ *
+ * 示例：
+ * @TW_Weakify(object)
+ * [obj block:^{
+ * @TW_Strongify(object)
+ * strong_object = something;
+ * }];
+ */
+#ifndef TW_Strongify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define TW_Strongify(object) autoreleasepool{} __typeof__(object) object = weak##_##object;
+#else
+#define TW_Strongify(object) autoreleasepool{} __typeof__(object) object = block##_##object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define TW_Strongify(object) try{} @finally{} __typeof__(object) object = weak##_##object;
+#else
+#define TW_Strongify(object) try{} @finally{} __typeof__(object) object = block##_##object;
+#endif
+#endif
+#endif
+
 #endif /* TWBaseTool_h */
