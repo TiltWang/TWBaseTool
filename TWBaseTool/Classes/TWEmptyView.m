@@ -11,6 +11,52 @@
 
 @implementation TWEmptyView
 
++ (instancetype)emptyCustomViewWithFrame:(CGRect)frame withCustomView:(UIView *)customView reloadBlock:(void (^)(void))reloadBlock {
+    TWEmptyView *emptyView = [[TWEmptyView alloc] initWithFrame:frame];
+    if (customView) {
+        emptyView.emptyCustomView = customView;
+    } else {
+        emptyView.emptyCustomView.hidden = YES;
+    }
+    emptyView.emptyType = TWEmptyTypeCustom;
+    if (reloadBlock) {
+        emptyView.hasTapReloadEvent = YES;
+        emptyView.reloadBlock = reloadBlock;
+    } else {
+        emptyView.hasTapReloadEvent = NO;
+    }
+    emptyView.hasDisplayEmpty = NO;
+    return emptyView;
+}
+
++ (instancetype)emptyViewWithFrame:(CGRect)frame image:(UIImage *)image tipText:(NSString *)tipText reloadText:(NSString *)reloadText reloadBlock:(void (^)(void))reloadBlock {
+    TWEmptyView *emptyView = [[TWEmptyView alloc] initWithFrame:frame];
+    if (image) {
+        emptyView.emptyImgView.image = image;
+    } else {
+        emptyView.emptyImgView.hidden = YES;
+    }
+    if (tipText) {
+        emptyView.emptyTipLbl.text = tipText;
+    } else {
+        emptyView.emptyTipLbl.hidden = YES;
+    }
+    if (reloadText) {
+        [emptyView.emptyReloadBtn setTitle:reloadText forState:UIControlStateNormal];
+    } else {
+        emptyView.emptyReloadBtn.hidden = YES;
+    }
+    emptyView.emptyType = TWEmptyTypeError;
+    if (reloadBlock) {
+        emptyView.hasTapReloadEvent = YES;
+        emptyView.reloadBlock = reloadBlock;
+    } else {
+        emptyView.hasTapReloadEvent = NO;
+    }
+    emptyView.hasDisplayEmpty = NO;
+    return emptyView;
+}
+
 - (void)emptyReloadBtnClick {
     if (_reloadBlock) {
         _reloadBlock();
@@ -21,8 +67,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithRed:((float)arc4random_uniform(256) / 255.0) green:((float)arc4random_uniform(256) / 255.0) blue:((float)arc4random_uniform(256) / 255.0) alpha:1.0];
         self.userInteractionEnabled = YES;
+        self.layer.masksToBounds = YES;
     }
     return self;
 }
@@ -43,8 +89,6 @@
     switch (emptyType) {
         case TWEmptyTypeCustom: {
             [self addSubview:self.emptyCustomView];
-            self.emptyCustomView.centerX = self.width / 2.0;
-            self.emptyCustomView.centerY = self.height / 2.0;
             break;
         }
         case TWEmptyTypeError: {
@@ -52,13 +96,26 @@
             [self addSubview:self.emptyTipLbl];
             [self addSubview:self.emptyReloadBtn];
             [self.emptyImgView sizeToFit];
+            [self.emptyTipLbl sizeToFit];
+            [self.emptyReloadBtn sizeToFit];
+            break;
+        }
+    }
+}
+
+- (void)layoutSubviews {
+    switch (self.emptyType) {
+        case TWEmptyTypeCustom: {
+            self.emptyCustomView.centerX = self.width / 2.0;
+            self.emptyCustomView.centerY = self.height / 2.0;
+            break;
+        }
+        case TWEmptyTypeError: {
             self.emptyImgView.centerX = self.width / 2.0;
             self.emptyImgView.centerY = self.height / 2.0 - 50;
             self.emptyImgView.size = self.emptyImgView.size;
-            [self.emptyTipLbl sizeToFit];
             self.emptyTipLbl.centerX = self.width / 2.0;
             self.emptyTipLbl.y = self.emptyImgView.y + self.emptyImgView.height + 10;
-            [self.emptyReloadBtn sizeToFit];
             self.emptyReloadBtn.centerX = self.width / 2.0;
             self.emptyReloadBtn.y = self.emptyTipLbl.y + self.emptyTipLbl.height + 10;
             break;
@@ -77,6 +134,7 @@
 - (UILabel *)emptyTipLbl {
     if (!_emptyTipLbl) {
         _emptyTipLbl = [[UILabel alloc] init];
+        _emptyTipLbl.font = [UIFont systemFontOfSize:15.0];
     }
     return _emptyTipLbl;
 }

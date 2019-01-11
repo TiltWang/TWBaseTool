@@ -35,7 +35,8 @@
 //    [self testAttributeStrHeight];
 //    [self showEmptyView];
 //    [self showCustomEmptyView];
-    self.loadingView.frame = CGRectMake(0, 300, 250, 100);
+//    self.loadingView.frame = CGRectMake(0, 300, 250, 100);
+    self.emptyView.frame = CGRectMake(0, 300, 250, 450);
 }
 
 - (void)testAttributeStrHeight {
@@ -58,8 +59,8 @@
 }
 - (void)testBtnClick {
 //    [self showCustomEmptyView];
-//    [self showEmptyView];
-    [self testLoading];
+    [self showEmptyView];
+//    [self testLoading];
 }
 
 - (void)testLoading {
@@ -72,33 +73,39 @@
 }
 
 - (void)showEmptyView {
-    TWEmptyView *view = [[TWEmptyView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    view.emptyImgView.frame = CGRectMake(0, 0, 100, 100);
-    view.emptyImgView.image = [UIImage imageNamed:@"empty"];
-    view.emptyImgView.backgroundColor = [UIColor colorWithRed:((float)arc4random_uniform(256) / 255.0) green:((float)arc4random_uniform(256) / 255.0) blue:((float)arc4random_uniform(256) / 255.0) alpha:1.0];
-    view.emptyTipLbl.text = @"12233343443";
-    [view.emptyReloadBtn setTitleColor:[UIColor colorWithRed:((float)arc4random_uniform(256) / 255.0) green:((float)arc4random_uniform(256) / 255.0) blue:((float)arc4random_uniform(256) / 255.0) alpha:1.0] forState:UIControlStateNormal];
-    view.emptyType = TWEmptyTypeError;
-    view.hasTapReloadEvent = YES;
-    [self.view addSubview:view];
+    self.emptyView = [TWEmptyView emptyViewWithFrame:[UIScreen mainScreen].bounds image:[UIImage imageNamed:@"empty"] tipText:@"错误提示" reloadText:@"重新加载" reloadBlock:nil];
+//    TWEmptyView *view = [[TWEmptyView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    view.emptyImgView.image = [UIImage imageNamed:@"empty"];
+//    view.emptyImgView.backgroundColor = [UIColor colorWithRed:((float)arc4random_uniform(256) / 255.0) green:((float)arc4random_uniform(256) / 255.0) blue:((float)arc4random_uniform(256) / 255.0) alpha:1.0];
+//    view.emptyTipLbl.text = @"12233343443";
+//    [view.emptyReloadBtn setTitleColor:[UIColor colorWithRed:((float)arc4random_uniform(256) / 255.0) green:((float)arc4random_uniform(256) / 255.0) blue:((float)arc4random_uniform(256) / 255.0) alpha:1.0] forState:UIControlStateNormal];
+//    view.emptyType = TWEmptyTypeError;
+//    view.hasTapReloadEvent = NO;
+//    self.emptyView = view;
+    [self.view addSubview:self.emptyView];
 }
 - (void)showCustomEmptyView {
 //    UIView *cView = [[UIView alloc] initWithFrame:CGRectMake(0, 30, 200, 200)];
 //    cView.backgroundColor = [UIColor redColor];
     
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"empty"]];
-    TWEmptyView *view = [[TWEmptyView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    view.emptyCustomView = imgView;
-//    view.emptyCustomView = cView;
-    view.emptyType = TWEmptyTypeCustom;
-    view.hasTapReloadEvent = YES;
     TW_WeakSelf
-    view.reloadBlock = ^{
+    self.emptyView = [TWEmptyView emptyCustomViewWithFrame:[UIScreen mainScreen].bounds withCustomView:imgView reloadBlock:^{
         TW_StrongSelf
         [self reloadAction];
-    };
-    self.emptyView = view;
-    [self.view addSubview:view];
+    }];
+//    TWEmptyView *view = [[TWEmptyView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    view.emptyCustomView = imgView;
+////    view.emptyCustomView = cView;
+//    view.emptyType = TWEmptyTypeCustom;
+//    view.hasTapReloadEvent = YES;
+//    TW_WeakSelf
+//    view.reloadBlock = ^{
+//        TW_StrongSelf
+//        [self reloadAction];
+//    };
+//    self.emptyView = view;
+    [self.view addSubview:self.emptyView];
 }
 
 - (void)reloadAction {
