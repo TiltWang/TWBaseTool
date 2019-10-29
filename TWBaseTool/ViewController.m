@@ -36,7 +36,8 @@
 //    [self showEmptyView];
 //    [self showCustomEmptyView];
 //    self.loadingView.frame = CGRectMake(0, 300, 250, 100);
-    self.emptyView.frame = CGRectMake(0, 300, 250, 450);
+//    self.emptyView.frame = CGRectMake(0, 300, 250, 450);
+    TWLog(@"%@", [TWUtil isHasFringe]? @"有刘海": @"没刘海");
 }
 
 - (void)testAttributeStrHeight {

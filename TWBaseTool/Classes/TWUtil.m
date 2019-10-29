@@ -12,33 +12,45 @@
 
 /// 是否含有刘海 即是否为X XS XS Max XR
 + (BOOL)isHasFringe {
-    CGFloat iPhoneNotchDirectionSafeAreaInsets = 0;
-    if (@available(iOS 11.0, *)) {
-        UIEdgeInsets safeAreaInsets = [UIApplication sharedApplication].windows[0].safeAreaInsets;
-        switch ([UIApplication sharedApplication].statusBarOrientation) {
-            case UIInterfaceOrientationPortrait:{
-                iPhoneNotchDirectionSafeAreaInsets = safeAreaInsets.top;
-            }
-                break;
-            case UIInterfaceOrientationLandscapeLeft:{
-                iPhoneNotchDirectionSafeAreaInsets = safeAreaInsets.left;
-            }
-                break;
-            case UIInterfaceOrientationLandscapeRight:{
-                iPhoneNotchDirectionSafeAreaInsets = safeAreaInsets.right;
-            }
-                break;
-            case UIInterfaceOrientationPortraitUpsideDown:{
-                iPhoneNotchDirectionSafeAreaInsets = safeAreaInsets.bottom;
-            }
-                break;
-            default:
-                iPhoneNotchDirectionSafeAreaInsets = safeAreaInsets.top;
-                break;
+    if (@available(iOS 13.0, *)) {
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            return NO;
         }
-        return iPhoneNotchDirectionSafeAreaInsets > 20;
-    } else {
+        CGSize size = [UIScreen mainScreen].bounds.size;
+        NSInteger notchValue = size.width / size.height * 100;
+        if (216 == notchValue || 46 == notchValue) {
+            return YES;
+        }
         return NO;
+    } else {
+        CGFloat iPhoneNotchDirectionSafeAreaInsets = 0;
+        if (@available(iOS 11.0, *)) {
+            UIEdgeInsets safeAreaInsets = [UIApplication sharedApplication].windows[0].safeAreaInsets;
+            switch ([UIApplication sharedApplication].statusBarOrientation) {
+                case UIInterfaceOrientationPortrait:{
+                    iPhoneNotchDirectionSafeAreaInsets = safeAreaInsets.top;
+                }
+                    break;
+                case UIInterfaceOrientationLandscapeLeft:{
+                    iPhoneNotchDirectionSafeAreaInsets = safeAreaInsets.left;
+                }
+                    break;
+                case UIInterfaceOrientationLandscapeRight:{
+                    iPhoneNotchDirectionSafeAreaInsets = safeAreaInsets.right;
+                }
+                    break;
+                case UIInterfaceOrientationPortraitUpsideDown:{
+                    iPhoneNotchDirectionSafeAreaInsets = safeAreaInsets.bottom;
+                }
+                    break;
+                default:
+                    iPhoneNotchDirectionSafeAreaInsets = safeAreaInsets.top;
+                    break;
+            }
+            return iPhoneNotchDirectionSafeAreaInsets > 20;
+        } else {
+            return NO;
+        }
     }
 }
 
